@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot name="demo02" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="base.xacro" />
+	<xacro:include filename="arm.xacro" />
+	<xacro:include filename="camera.xacro" />
+	<xacro:include filename="laser.xacro" />
+</robot>

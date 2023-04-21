@@ -1,0 +1,8 @@
+prefix=/home/wang/catkin_ws/big_homework_ws/install
+
+Name: big_homework_demo
+Description: Description of big_homework_demo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

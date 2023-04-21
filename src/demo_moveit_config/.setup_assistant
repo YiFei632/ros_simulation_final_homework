@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: demo_gazebo
+    relative_path: urdf/big_homework_03.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/demo02.srdf
+  CONFIG:
+    author_name: YiFei Wang
+    author_email: sdtzwyf@163.com
+    generated_timestamp: 1670935112

@@ -1,0 +1,8 @@
+prefix=/home/wang/catkin_ws/big_homework_ws/devel
+
+Name: demo_navigation
+Description: Description of demo_navigation
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

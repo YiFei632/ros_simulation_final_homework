@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<robot name="mydemo">
+
+	<link name="base_footprint">
+		<visual>
+			<geometry>
+				<sphere radius="0.001" />
+			</geometry>
+		</visual>
+	</link>	
+		
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<box size="0.546 0.246 0.08" />
+				
+			</geometry>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<material name="material_1">
+				<color rgba="0.7 0.5 0 0.9" />
+			</material>
+		</visual>
+	</link>
+	
+	<link name="cylinder_link_1">
+		<visual>
+			<geometry>
+				<cylinder radius="0.08" length="0.02"/>
+				
+			</geometry>
+			<origin xyz="0 0 0" rpy="1.5708 0 0" />
+			<material name="material_2">
+				<color rgba="0.7 0 0.5 0.9" />
+			</material>
+		</visual>
+	</link>
+	
+	<link name="cylinder_link_2">
+		<visual>
+			<geometry>
+				<cylinder radius="0.08" length="0.02"/>
+				
+			</geometry>
+			<origin xyz="0 0 0" rpy="1.5708 0 0" />
+			<material name="material_3">
+				<color rgba="0.7 0 0.5 0.9" />
+			</material>
+		</visual>
+	</link>
+	
+	<link name="cylinder_link_3">
+		<visual>
+			<geometry>
+				<cylinder radius="0.08" length="0.02"/>
+				
+			</geometry>
+			<origin xyz="0 0 0" rpy="1.5708 0 0" />
+			<material name="material_3">
+				<color rgba="0.7 0 0.5 0.9" />
+			</material>
+		</visual>
+	</link>
+	
+	<link name="cylinder_link_4">
+		<visual>
+			<geometry>
+				<cylinder radius="0.08" length="0.02"/>
+				
+			</geometry>
+			<origin xyz="0 0 0" rpy="1.5708 0 0" />
+			<material name="material_3">
+				<color rgba="0.7 0 0.5 0.9" />
+			</material>
+		</visual>
+	</link>
+	
+	<joint name="link2footprint" type="fixed">
+		<parent link="base_footprint" />
+		<child link="base_link" />
+		
+		<origin xyz="0 0 0.065" rpy="0 0 0" />
+	</joint>
+	
+	<joint name="base_cylinder_1" type="continuous">
+		<origin xyz="0.15 0.133 -0.01" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="cylinder_link_1" />
+		<axis xyz="0 1 0" />
+	</joint>
+	
+	<joint name="base_cylinder_2" type="continuous">
+		<origin xyz="-0.15 0.133 -0.01" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="cylinder_link_2" />
+		<axis xyz="0 1 0" />
+	</joint>
+	
+	<joint name="base_cylinder_3" type="continuous">
+		<origin xyz="0.15 -0.133 -0.01" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="cylinder_link_3" />
+		<axis xyz="0 1 0" />
+	</joint>
+	
+	<joint name="base_cylinder_4" type="continuous">
+		<origin xyz="-0.15 -0.133 -0.01" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="cylinder_link_4" />
+		<axis xyz="0 1 0" />
+	</joint>
+	
+</robot>

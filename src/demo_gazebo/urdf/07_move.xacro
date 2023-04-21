@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<robot name="demo02_move" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <!-- 传动实现:用于连接控制器与关节 -->
+    <xacro:macro name="joint_trans" params="joint_name">
+        <!-- Transmission is important to link the joints and the controller -->
+        <transmission name="${joint_name}_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint_name}">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint_name}_motor">
+                <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+
+    <!-- 每一个驱动轮都需要配置传动装置(需修改) -->
+    <xacro:joint_trans joint_name="base_cylinder_1" />
+    <xacro:joint_trans joint_name="base_cylinder_2" />
+    <xacro:joint_trans joint_name="base_cylinder_3" />
+    <xacro:joint_trans joint_name="base_cylinder_4" />
+
+    <!-- 控制器 -->
+    <gazebo>
+        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+            <rosDebugLevel>Debug</rosDebugLevel>
+            <publishWheelTF>true</publishWheelTF>
+            <robotNamespace>/</robotNamespace>
+            <publishTf>1</publishTf>
+            <publishWheelJointState>true</publishWheelJointState>
+
+            <updateRate>100.0</updateRate>
+            <legacyMode>true</legacyMode>
+            
+            <leftFrontJoint>base_cylinder_1</leftFrontJoint> <!-- 左前轮 -->
+            <leftRearJoint>base_cylinder_2</leftRearJoint> <!-- 左后轮 -->
+            <rightFrontJoint>base_cylinder_3</rightFrontJoint> <!-- 右前轮 -->
+            <rightRearJoint>base_cylinder_4</rightRearJoint> <!-- 右后轮 -->
+
+            <wheelSeparation>0.246</wheelSeparation> <!-- 车轮间距 -->
+            <wheelDiameter>0.16</wheelDiameter> <!-- 车轮直径 -->
+            <broadcastTF>1</broadcastTF>
+            <torque>4000000</torque>
+            <wheelAcceleration>1.8</wheelAcceleration>
+            <commandTopic>cmd_vel</commandTopic> <!-- 运动控制话题 -->
+            <odometryFrame>odom</odometryFrame> 
+            <odometryTopic>odom</odometryTopic> <!-- 里程计话题 -->
+            <robotBaseFrame>base_footprint</robotBaseFrame> <!-- 根坐标系 -->
+        </plugin>
+    </gazebo>
+
+</robot>

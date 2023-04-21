@@ -1,0 +1,54 @@
+arm:
+  arm_joint_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints:
+      - joint1
+      - joint2
+      - joint3
+      - joint4
+      - joint5
+      - joint6
+      #- pop_up_joint
+
+    gains:
+      joint1:   {p: 1000.0, i: 0.01, d: 0.1, i_clamp: 0.0}
+      joint2:   {p: 1000.0, i: 0.01, d: 0.1, i_clamp: 0.0}
+      joint3:   {p: 1000.0, i: 0.01, d: 0.1, i_clamp: 0.0}
+      joint4:   {p: 1000.0, i: 0.01, d: 0.1, i_clamp: 0.0}
+      joint5:   {p: 1000.0, i: 0.01, d: 0.1, i_clamp: 0.0}
+      joint6:   {p: 1000.0, i: 0.01, d: 0.1, i_clamp: 0.0}
+      #pop_up_joint:   {p: 1000.0, i: 0.01, d: 0.1, i_clamp: 0.0}
+      
+    constraints:
+      joint1:
+        goal: 0.001
+        trajectory: 0.001
+      joint2:
+        goal: 0.001
+        trajectory: 0.001
+      joint3:
+        goal: 0.001
+        trajectory: 0.001
+      joint4:
+        goal: 0.001
+        trajectory: 0.001
+      joint5:
+        goal: 0.001
+        trajectory: 0.001
+      joint6:
+        goal: 0.001
+        trajectory: 0.001
+      #pop_up_joint:
+       # goal: 0.001
+       # trajectory: 0.001
+
+
+  gripper_controller:
+    type: "effort_controllers/JointPositionController"
+    joint: finger_joint1
+    pid:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+    
+  pop_up_controller:
+    type: "effort_controllers/JointPositionController"
+    joint: pop_up_joint
+    pid:  {p: 1000.0, d: 0.1, i: 0.01, i_clamp: 1.0}

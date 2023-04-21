@@ -1,0 +1,8 @@
+prefix=/home/wang/catkin_ws/big_homework_ws/devel
+
+Name: gazebo_world_plugin_loader
+Description: Description of gazebo_world_plugin_loader
+Version: 1.0.2
+Cflags: -I/home/wang/catkin_ws/big_homework_ws/src/gazebo-pkgs-master/gazebo_world_plugin_loader/include
+Libs: -L${prefix}/lib -lgazebo_world_plugin_loader
+Requires: roscpp gazebo_ros gazebo_ros

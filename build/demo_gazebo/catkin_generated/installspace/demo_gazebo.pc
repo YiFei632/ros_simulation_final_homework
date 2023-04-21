@@ -1,0 +1,8 @@
+prefix=/home/wang/catkin_ws/big_homework_ws/install
+
+Name: demo_gazebo
+Description: Description of demo_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

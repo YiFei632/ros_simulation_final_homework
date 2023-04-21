@@ -1,0 +1,30 @@
+<!-- 根标签，必须声明 xmlns:xacro -->
+<robot name="demo02" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!--摄像头组件-->
+    <!--参数：自身长宽高，关节属性：xyz偏移量-->
+    <xacro:property name="camera_length" value="0.02" /> <!-- 厚度x -->
+    <xacro:property name="camera_width" value="0.025" /> <!-- 宽度y -->
+    <xacro:property name="camera_height" value="0.04" /> <!-- 高度z -->
+    <xacro:property name="joint_camera_x" value="0.26" /> <!--  -->
+    <xacro:property name="joint_camera_y" value="0" /> <!--  -->
+    <xacro:property name="joint_camera_z" value="${base_link_length / 2 + camera_height / 2}" /> <!--  -->
+    
+    <!--设计连杆和关节-->
+    <link name="camera">
+    	<visual>
+    		<geometry>
+    			<box size="${camera_length} ${camera_width} ${camera_height}" />
+    		</geometry>
+    		<material name="black">
+    			<color rgba="0 0 0 0.8" />
+    		</material>
+    	</visual>
+    </link>
+    
+    <joint name="camera2base" type="fixed">
+    	<parent link="base_link" />
+    	<child link="camera" />
+    	<origin xyz="${joint_camera_x} ${joint_camera_y} ${joint_camera_z}" rpy="0 0 0" />	
+    </joint>
+</robot>
+

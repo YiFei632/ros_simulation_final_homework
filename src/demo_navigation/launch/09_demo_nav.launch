@@ -1,0 +1,8 @@
+<launch>
+	<param name="use_sim_time" value="true" />
+	<arg name="map" default="map.yaml" />
+	<node name="map_server" pkg="map_server" type="map_server" args="$(find demo_navigation)/map/$(arg map)" />
+	<include file="$(find demo_navigation)/launch/demo_move_base.launch" />
+	<node pkg="fake_localization" type="fake_localization" name="fake_localization" output="screen" />
+	<node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 /map /odom 100" />
+</launch>

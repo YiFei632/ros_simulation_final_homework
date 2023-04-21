@@ -1,0 +1,54 @@
+<!-- 根标签，必须声明 xmlns:xacro -->
+<robot name="demo02" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!--雷达组件-->
+    <!--支架 参数：半径、高度，关节偏移量xyz-->
+    <xacro:property name="support_radius" value="0.01" /> <!--  -->
+    <xacro:property name="support_length" value="0.15" />
+    <xacro:property name="joint_support_x" value="0.1" />
+    <xacro:property name="joint_support_y" value="0" />
+    <xacro:property name="joint_support_z" value="${base_link_length / 2 + support_length / 2}" />
+    
+    <!--雷达 参数：半径、高度，关节偏移量xyz-->
+    <xacro:property name="laser_radius" value="0.03" /> <!--  -->
+    <xacro:property name="laser_length" value="0.05" />
+    <xacro:property name="joint_laser_x" value="0" />
+    <xacro:property name="joint_laser_y" value="0" />
+    <xacro:property name="joint_laser_z" value="${support_length / 2 + laser_length / 2}" />
+    
+    <!--支架-->
+    <link name="support">
+    	<visual>
+    		<geometry>
+    			<cylinder radius="${support_radius}" length="${support_length}" />
+    		</geometry>
+    		<material name="yellow">
+    			<color rgba="0.8 0.1 0.2 0.5" />
+    		</material>
+    	</visual>
+    </link>
+    
+    <joint name="support2base" type="fixed">
+    	<parent link="base_link" />
+    	<child link="support" />
+    	<origin xyz="${joint_support_x} ${joint_support_y} ${joint_support_z}" rpy="0 0 0" />
+    </joint>
+    
+    <!--雷达-->
+    <link name="laser">
+    	<visual>
+    		<geometry>
+    			<cylinder radius="${laser_radius}" length="${laser_length}" />
+    		</geometry>
+    		<material name="black">
+    			<color rgba="0 0 0 0.5" />
+    		</material>
+    	</visual>
+    </link>
+    
+    <joint name="laser2support" type="fixed">
+    	<parent link="support" />
+    	<child link="laser" />
+    	<origin xyz="${joint_laser_x} ${joint_laser_y} ${joint_laser_z}" rpy="0 0 0" />
+    </joint>
+</robot>
+

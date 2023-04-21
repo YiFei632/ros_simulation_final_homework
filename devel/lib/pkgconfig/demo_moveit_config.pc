@@ -1,0 +1,8 @@
+prefix=/home/wang/catkin_ws/big_homework_ws/devel
+
+Name: demo_moveit_config
+Description: Description of demo_moveit_config
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

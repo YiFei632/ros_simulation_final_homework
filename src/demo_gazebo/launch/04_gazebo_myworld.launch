@@ -1,0 +1,12 @@
+<launch>
+	<!--参数服务器中载入urdf-->
+	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find demo_gazebo)/urdf/big_homework_03.xacro" />
+	<param name="target_description" command="$(find xacro)/xacro --inorder $(find demo_gazebo)/urdf/06_target.xacro" />
+	<!--启动gazebo仿真环境-->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(find demo_gazebo)/worlds/demo_world_04.world" />
+	</include>
+	<!--在Gazebo中添加机器人模型-->
+	<node pkg="gazebo_ros" type="spawn_model" name="spawn_model" args="-urdf -model robot_control -param robot_description"/>
+	<node pkg="gazebo_ros" type="spawn_model" name="target_model" args="-urdf -model target_control -param target_description"/>
+</launch>
